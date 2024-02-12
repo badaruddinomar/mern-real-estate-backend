@@ -52,7 +52,7 @@ const server = app.listen(process.env.PORT || 4000, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
 // ROUTES--
-app.get("/", () => {
+app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 app.use("/api/v1/auth", authRoute);
