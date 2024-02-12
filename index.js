@@ -14,25 +14,15 @@ const { frontendUrl } = require("./helper");
 const app = express();
 
 // MIDDLEWARES--
-// const corsOptions = {
-//   origin: frontendUrl,
-//   credentials: true,
-//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   // optionsSuccessStatus: 204,
-//   optionsSuccessStatus: 200,
-//   allowedHeaders: "Content-Type,Authorization",
-// };
-// app.use(cors(corsOptions));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
+const corsOptions = {
+  origin: frontendUrl,
+  credentials: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  // optionsSuccessStatus: 204,
+  optionsSuccessStatus: 200,
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(helmet());
 app.use(compression());
